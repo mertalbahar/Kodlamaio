@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kodlamaio.DataAccess\Kodlamaio.DataAccess.csproj" />
+    <ProjectReference Include="..\Kodlamaio.Entities\Kodlamaio.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

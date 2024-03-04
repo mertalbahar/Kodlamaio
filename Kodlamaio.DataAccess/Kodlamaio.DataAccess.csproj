@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kodlamaio.Core\Kodlamaio.Core.csproj" />
+    <ProjectReference Include="..\Kodlamaio.Entities\Kodlamaio.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

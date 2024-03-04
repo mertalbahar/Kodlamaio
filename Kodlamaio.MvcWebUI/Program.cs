@@ -1,7 +1,19 @@
+using Kodlamaio.Business.Abstracts;
+using Kodlamaio.Business.Concretes;
+using Kodlamaio.DataAccess.Abstracts;
+using Kodlamaio.DataAccess.Concretes.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<KodlamaioContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("KodlamaioContext"), b => b.MigrationsAssembly("Kodlamaio.MvcWebUI")));
+
+builder.Services.AddScoped<ICourseService, CourseManager>();
+builder.Services.AddScoped<ICourseDal, EfCourseDal>();
 
 var app = builder.Build();
 

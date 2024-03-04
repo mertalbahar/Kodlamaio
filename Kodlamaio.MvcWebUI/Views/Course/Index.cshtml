@@ -1,0 +1,31 @@
+﻿@model CourseListViewModel
+
+<div>
+    <h1 class="my-3">Programlama</h1>
+</div>
+
+<div class="row">
+    @foreach (var course in Model.Courses)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="~/images/@course.ImageUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@course.Title</h5>
+                    <p class="card-text">@course.Description</p>
+                </div>
+                <div class="card-footer">
+                    <div>Course Id: <span class="text-danger">@course.Id</span></div>
+                    <div>Created at: <span class="text-primary">@course.CreatedDate</span></div>
+                    @if (course.UpdatedDate != null)
+                    {
+                        <div>Updated at: <span class="text-warning">@course.UpdatedDate</span></div>
+                    }
+                    <div>
+                        <a class="btn btn-primary my-1" asp-controller="Course" asp-action="UpdateCourse" asp-route-id="@course.Id">Update Course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

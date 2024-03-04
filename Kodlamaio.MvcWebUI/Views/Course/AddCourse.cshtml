@@ -1,0 +1,21 @@
+﻿@model CreateCourseRequest
+
+<div>
+    <h1 class="my-3">Course Add</h1>
+</div>
+
+<form method="post" asp-action="AddCourse">
+    <div class="w-50">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Title" asp-for="Title">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Description" asp-for="Description">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="ImageUrl" asp-for="ImageUrl">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
