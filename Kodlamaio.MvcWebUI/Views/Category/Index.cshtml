@@ -1,0 +1,35 @@
+﻿@model CategoryListViewModel
+
+<div class="d-flex justify-content-between align-items-center">
+    <div><h1 class="my-3">Categories</h1></div>
+    <div><a class="btn btn-success" asp-area="" asp-controller="Category" asp-action="AddCategory">Category Add</a></div>
+</div>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Updated At</th>
+                <th scope="col">Functions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.Categories)
+            {
+                <tr>
+                    <th scope="row">@category.Id</th>
+                    <td>@category.Title</td>
+                    <td>@category.CreatedDate</td>
+                    <td>@category.UpdatedDate</td>
+                    <td>
+                        <a class="btn btn-primary my-1" asp-controller="Category" asp-action="UpdateCategory" asp-route-id="@category.Id">Update Course</a>
+                        <a class="btn btn-danger" asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@category.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

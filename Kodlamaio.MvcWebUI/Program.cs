@@ -13,7 +13,10 @@ builder.Services.AddDbContext<KodlamaioContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("KodlamaioContext"), b => b.MigrationsAssembly("Kodlamaio.MvcWebUI")));
 
 builder.Services.AddScoped<ICourseService, CourseManager>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
 builder.Services.AddScoped<ICourseDal, EfCourseDal>();
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
 var app = builder.Build();
 

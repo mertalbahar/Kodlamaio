@@ -1,0 +1,15 @@
+﻿@model CreateCategoryRequest
+
+<div>
+    <h1 class="my-3">Category Add</h1>
+</div>
+
+<form method="post" asp-action="AddCategory">
+    <div class="w-50">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Title" asp-for="Title">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>

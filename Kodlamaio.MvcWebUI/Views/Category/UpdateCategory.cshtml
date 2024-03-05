@@ -1,0 +1,18 @@
+﻿@model UpdateCategoryRequest
+
+<div>
+    <h1 class="my-3">Category Update <span class="text-primary">[@Model.Title]</span></h1>
+</div>
+
+<form method="post" asp-action="UpdateCategory">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="w-50">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Title" asp-for="Title">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </div>
+</form>

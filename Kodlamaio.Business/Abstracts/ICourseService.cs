@@ -14,7 +14,7 @@ public interface ICourseService
     List<GetAllCourseResponse> GetAll();
     Course GetCourse(int id);
     UpdateCourseRequest GetCourseUpdate(int id);
-    CreatedCourseResponse Add(CreateCourseRequest createBrandRequest);
+    CreatedCourseResponse Add(CreateCourseRequest createCourseRequest);
     UpdatedCourseResponse Update(UpdateCourseRequest updateCourseRequest);
     void Delete(int id);
 }
