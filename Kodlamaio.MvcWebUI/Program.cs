@@ -14,9 +14,11 @@ builder.Services.AddDbContext<KodlamaioContext>(options =>
 
 builder.Services.AddScoped<ICourseService, CourseManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<IInstructorService, InstructorManager>();
 
 builder.Services.AddScoped<ICourseDal, EfCourseDal>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<IInstructorDal, EfInstructorDal>();
 
 var app = builder.Build();
 

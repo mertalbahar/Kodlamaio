@@ -1,8 +1,8 @@
-﻿@model CategoryListViewModel
+﻿@model InstructorListViewModel
 
 <div class="d-flex justify-content-between align-items-center">
     <div><h1 class="my-3">Categories</h1></div>
-    <div><a class="btn btn-success" asp-area="" asp-controller="Category" asp-action="AddCategory">Category Add</a></div>
+    <div><a class="btn btn-success" asp-area="" asp-controller="Instructor" asp-action="AddInstructor">Instructor Add</a></div>
 </div>
 
 <div class="row">
@@ -10,23 +10,25 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Title</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
                 <th scope="col">Created At</th>
                 <th scope="col">Updated At</th>
                 <th scope="col">Functions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Categories)
+            @foreach (var item in Model.Instructors)
             {
                 <tr>
                     <th scope="row">@item.Id</th>
-                    <td>@item.Title</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
                     <td>@item.CreatedDate</td>
                     <td>@item.UpdatedDate</td>
                     <td>
-                        <a class="btn btn-primary my-1" asp-controller="Category" asp-action="UpdateCategory" asp-route-id="@item.Id">Update Category</a>
-                        <a class="btn btn-danger" asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-primary my-1" asp-controller="Instructor" asp-action="UpdateInstructor" asp-route-id="@item.Id">Update Instructor</a>
+                        <a class="btn btn-danger" asp-controller="Instructor" asp-action="DeleteInstructor" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }

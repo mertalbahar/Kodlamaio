@@ -1,0 +1,18 @@
+﻿@model CreateInstructorRequest
+
+<div>
+    <h1 class="my-3">Instructor Add</h1>
+</div>
+
+<form method="post" asp-action="AddInstructor">
+    <div class="w-50">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="FirstName" asp-for="FirstName">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="LastName" asp-for="LastName">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>

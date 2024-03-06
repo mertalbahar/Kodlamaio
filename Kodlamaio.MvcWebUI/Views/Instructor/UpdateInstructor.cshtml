@@ -1,0 +1,21 @@
+﻿@model UpdateInstructorRequest
+
+<div>
+    <h1 class="my-3">Instructor Update <span class="text-primary">[@Model.FirstName]</span></h1>
+</div>
+
+<form method="post" asp-action="UpdateInstructor">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="w-50">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="FirstName" asp-for="FirstName">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="LastName" asp-for="LastName">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </div>
+</form>
