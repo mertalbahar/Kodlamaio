@@ -1,0 +1,13 @@
+﻿@model CategoryListViewModel
+
+<div class="list-group">
+    <a class="list-group-item list-group-item-action fw-bold" aria-current="true" asp-controller="Course" asp-action="Index">
+        All Courses
+    </a>
+    @foreach (var item in Model.Categories)
+    {
+        <a class="list-group-item list-group-item-action" aria-current="true" asp-controller="Course" asp-action="GetCourseByCategory" asp-route-id="@item.Id">
+            @item.Title
+        </a>
+    }
+</div>

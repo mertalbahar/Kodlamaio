@@ -1,0 +1,52 @@
+﻿@model CourseListViewModel
+
+<div class="d-flex justify-content-between align-items-center">
+    <div><h1 class="my-3">Programlama</h1></div>
+    <div><a class="btn btn-success" asp-area="" asp-controller="Course" asp-action="AddCourse">Course Add</a></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("CategoriesMenu")
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            @if (Model.Courses.Count > 0)
+            {
+                @foreach (var item in Model.Courses)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="~/images/@item.ImageUrl" class="card-img-top" alt="...">
+                            <div class="card-header">
+                                <h4 class="card-title">Category: [@item.CategoryId]</h4>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <p class="card-text">@item.Description</p>
+                            </div>
+                            <div class="card-footer">
+                                <div>Course Id: <span class="text-danger">@item.Id</span></div>
+                                <div>Created at: <span class="text-primary">@item.CreatedDate</span></div>
+                                @if (item.UpdatedDate != null)
+                                {
+                                    <div>Updated at: <span class="text-warning">@item.UpdatedDate</span></div>
+                                }
+                                <div>
+                                    <a class="btn btn-primary my-1" asp-controller="Course" asp-action="UpdateCourse" asp-route-id="@item.Id">Update Course</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert">
+                    There is no Course found!
+                </div>
+            }
+        </div>
+    </div>
+</div>

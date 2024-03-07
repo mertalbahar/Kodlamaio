@@ -57,5 +57,15 @@ namespace Kodlamaio.MvcWebUI.Controllers
             _courseService.Delete(id);
             return RedirectToAction("Index");
         }
+
+        public IActionResult GetCourseByCategory([FromRoute (Name = "id")] int categoryId)
+        {
+            var model = new CourseListViewModel
+            {
+                Courses = _courseService.GetCourseByCategory(categoryId)
+            };
+
+            return View(model);
+        }
     }
 }

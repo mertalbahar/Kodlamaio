@@ -16,5 +16,6 @@ public interface ICourseService
     UpdateCourseRequest GetCourseUpdate(int id);
     CreatedCourseResponse Add(CreateCourseRequest createCourseRequest);
     UpdatedCourseResponse Update(UpdateCourseRequest updateCourseRequest);
+    List<GetAllCourseResponse> GetCourseByCategory(int categoryId);
     void Delete(int id);
 }

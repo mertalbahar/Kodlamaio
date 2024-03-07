@@ -28,11 +28,12 @@ public class CourseManager : ICourseService
         {
             GetAllCourseResponse getAllCourseResponse = new GetAllCourseResponse();
             getAllCourseResponse.Id = course.Id;
+            getAllCourseResponse.CategoryId = course.CategoryId;
             getAllCourseResponse.Title = course.Title;
             getAllCourseResponse.Description = course.Description;
-            getAllCourseResponse.CreatedDate= course.CreatedDate;
-            getAllCourseResponse.ImageUrl= course.ImageUrl;
-            getAllCourseResponse.UpdatedDate= course.UpdatedDate;
+            getAllCourseResponse.CreatedDate = course.CreatedDate;
+            getAllCourseResponse.ImageUrl = course.ImageUrl;
+            getAllCourseResponse.UpdatedDate = course.UpdatedDate;
 
             getAllCourseResponses.Add(getAllCourseResponse);
         }
@@ -50,6 +51,7 @@ public class CourseManager : ICourseService
     public CreatedCourseResponse Add(CreateCourseRequest createCouseRequest)
     {
         Course course = new();
+        course.CategoryId = createCouseRequest.CategoryId;
         course.Title = createCouseRequest.Title;
         course.Description = createCouseRequest.Description;
         course.ImageUrl = createCouseRequest.ImageUrl;
@@ -57,6 +59,7 @@ public class CourseManager : ICourseService
         _courseDal.Add(course);
 
         CreatedCourseResponse createdCourseResponse = new CreatedCourseResponse();
+        createdCourseResponse.CategoryId = course.CategoryId;
         createdCourseResponse.Title = course.Title;
         createdCourseResponse.Description = course.Description;
         createdCourseResponse.CreatedDate = course.CreatedDate;
@@ -72,6 +75,7 @@ public class CourseManager : ICourseService
 
         UpdateCourseRequest updateCourseRequest = new UpdateCourseRequest();
         updateCourseRequest.Id = course.Id;
+        updateCourseRequest.CategoryId = course.CategoryId;
         updateCourseRequest.Title = course.Title;
         updateCourseRequest.Description = course.Description;
         updateCourseRequest.ImageUrl = course.ImageUrl;
@@ -81,6 +85,7 @@ public class CourseManager : ICourseService
     public UpdatedCourseResponse Update(UpdateCourseRequest updateCourseRequest)
     {
         Course course = GetCourse(updateCourseRequest.Id);
+        course.CategoryId = updateCourseRequest.CategoryId;
         course.Title = updateCourseRequest.Title;
         course.Description = updateCourseRequest.Description;
         course.ImageUrl = updateCourseRequest.ImageUrl;
@@ -89,6 +94,7 @@ public class CourseManager : ICourseService
         _courseDal.Update(course);
 
         UpdatedCourseResponse updatedCourseResponse = new UpdatedCourseResponse();
+        updatedCourseResponse.CategoryId = course.CategoryId;
         updatedCourseResponse.Title = course.Title;
         updatedCourseResponse.Description = course.Description;
         updatedCourseResponse.ImageUrl = course.ImageUrl;
@@ -101,5 +107,28 @@ public class CourseManager : ICourseService
     {
         Course course = GetCourse(id);
         _courseDal.Delete(course);
+    }
+
+    public List<GetAllCourseResponse> GetCourseByCategory(int categoryId)
+    {
+        List<Course> courses = _courseDal.GetAll(crs => crs.CategoryId == categoryId);
+
+        List<GetAllCourseResponse> getAllCourseResponses = new List<GetAllCourseResponse>();
+
+        foreach (Course course in courses)
+        {
+            GetAllCourseResponse getAllCourseResponse = new GetAllCourseResponse();
+            getAllCourseResponse.Id = course.Id;
+            getAllCourseResponse.CategoryId = course.CategoryId;
+            getAllCourseResponse.Title = course.Title;
+            getAllCourseResponse.Description = course.Description;
+            getAllCourseResponse.CreatedDate = course.CreatedDate;
+            getAllCourseResponse.ImageUrl = course.ImageUrl;
+            getAllCourseResponse.UpdatedDate = course.UpdatedDate;
+
+            getAllCourseResponses.Add(getAllCourseResponse);
+        }
+
+        return getAllCourseResponses;
     }
 }

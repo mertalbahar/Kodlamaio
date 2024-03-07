@@ -8,6 +8,7 @@ namespace Kodlamaio.Business.Dtos.Responses;
 
 public class UpdatedCourseResponse
 {
+    public int CategoryId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public DateTime UpdatedDate { get; set; }
