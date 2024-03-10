@@ -13,4 +13,5 @@ public class GetAllInstructorResponse
     public string LastName { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime? UpdatedDate { get; set; }
+    public string FullName { get; set; }
 }

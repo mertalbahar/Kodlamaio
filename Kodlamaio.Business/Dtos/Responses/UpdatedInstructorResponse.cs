@@ -11,4 +11,5 @@ public class UpdatedInstructorResponse
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public DateTime UpdatedDate { get; set; }
+    public string FullName { get; set; }
 }

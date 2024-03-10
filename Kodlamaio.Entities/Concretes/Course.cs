@@ -10,8 +10,10 @@ namespace Kodlamaio.Entities.Concretes;
 public class Course : EntityBase<int>, IEntity
 {
     public int CategoryId { get; set; }
+    public int InstructorId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public string ImageUrl { get; set; }
     public Category Category { get; set; }
+    public Instructor Instructor { get; set; }
 }

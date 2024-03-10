@@ -32,6 +32,7 @@ public class InstructorManager : IInstructorService
         CreatedInstructorResponse createdInstructorResponse = new CreatedInstructorResponse();
         createdInstructorResponse.FirstName = instructor.FirstName;
         createdInstructorResponse.LastName = instructor.LastName;
+        createdInstructorResponse.FullName = instructor.FullName;
         createdInstructorResponse.CreatedDate = instructor.CreatedDate;
 
         return createdInstructorResponse;
@@ -54,6 +55,7 @@ public class InstructorManager : IInstructorService
             getAllInstructorResponse.Id = instructor.Id;
             getAllInstructorResponse.FirstName = instructor.FirstName;
             getAllInstructorResponse.LastName = instructor.LastName;
+            getAllInstructorResponse.FullName= instructor.FullName;
             getAllInstructorResponse.CreatedDate = instructor.CreatedDate;
             getAllInstructorResponse.UpdatedDate = instructor.UpdatedDate;
 
@@ -78,6 +80,7 @@ public class InstructorManager : IInstructorService
         updateInstructorRequest.Id = instructor.Id;
         updateInstructorRequest.FirstName = instructor.FirstName;
         updateInstructorRequest.LastName = instructor.LastName;
+        updateInstructorRequest.FullName = instructor.FullName;
 
         return updateInstructorRequest;
     }
@@ -91,11 +94,12 @@ public class InstructorManager : IInstructorService
 
         _instructorDal.Update(instructor);
 
-        UpdatedInstructorResponse updateInstructorResponse = new UpdatedInstructorResponse();
-        updateInstructorResponse.FirstName = instructor.FirstName;
-        updateInstructorResponse.LastName = instructor.LastName;
-        updateInstructorResponse.UpdatedDate = DateTime.Now;
+        UpdatedInstructorResponse updatedInstructorResponse = new UpdatedInstructorResponse();
+        updatedInstructorResponse.FirstName = instructor.FirstName;
+        updatedInstructorResponse.LastName = instructor.LastName;
+        updatedInstructorResponse.FullName = instructor.FullName;
+        updatedInstructorResponse.UpdatedDate = DateTime.Now;
 
-        return updateInstructorResponse;
+        return updatedInstructorResponse;
     }
 }

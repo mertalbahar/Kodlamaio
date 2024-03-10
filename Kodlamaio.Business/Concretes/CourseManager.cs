@@ -29,6 +29,7 @@ public class CourseManager : ICourseService
             GetAllCourseResponse getAllCourseResponse = new GetAllCourseResponse();
             getAllCourseResponse.Id = course.Id;
             getAllCourseResponse.CategoryId = course.CategoryId;
+            getAllCourseResponse.InstructorId = course.InstructorId;
             getAllCourseResponse.Title = course.Title;
             getAllCourseResponse.Description = course.Description;
             getAllCourseResponse.CreatedDate = course.CreatedDate;
@@ -52,6 +53,7 @@ public class CourseManager : ICourseService
     {
         Course course = new();
         course.CategoryId = createCouseRequest.CategoryId;
+        course.InstructorId = createCouseRequest.InstructorId;
         course.Title = createCouseRequest.Title;
         course.Description = createCouseRequest.Description;
         course.ImageUrl = createCouseRequest.ImageUrl;
@@ -60,6 +62,7 @@ public class CourseManager : ICourseService
 
         CreatedCourseResponse createdCourseResponse = new CreatedCourseResponse();
         createdCourseResponse.CategoryId = course.CategoryId;
+        createdCourseResponse.InstructorId = course.InstructorId;
         createdCourseResponse.Title = course.Title;
         createdCourseResponse.Description = course.Description;
         createdCourseResponse.CreatedDate = course.CreatedDate;
@@ -76,6 +79,7 @@ public class CourseManager : ICourseService
         UpdateCourseRequest updateCourseRequest = new UpdateCourseRequest();
         updateCourseRequest.Id = course.Id;
         updateCourseRequest.CategoryId = course.CategoryId;
+        updateCourseRequest.InstructorId = course.InstructorId;
         updateCourseRequest.Title = course.Title;
         updateCourseRequest.Description = course.Description;
         updateCourseRequest.ImageUrl = course.ImageUrl;
@@ -86,6 +90,7 @@ public class CourseManager : ICourseService
     {
         Course course = GetCourse(updateCourseRequest.Id);
         course.CategoryId = updateCourseRequest.CategoryId;
+        course.InstructorId = updateCourseRequest.InstructorId;
         course.Title = updateCourseRequest.Title;
         course.Description = updateCourseRequest.Description;
         course.ImageUrl = updateCourseRequest.ImageUrl;
@@ -95,6 +100,7 @@ public class CourseManager : ICourseService
 
         UpdatedCourseResponse updatedCourseResponse = new UpdatedCourseResponse();
         updatedCourseResponse.CategoryId = course.CategoryId;
+        updatedCourseResponse.InstructorId = course.InstructorId;
         updatedCourseResponse.Title = course.Title;
         updatedCourseResponse.Description = course.Description;
         updatedCourseResponse.ImageUrl = course.ImageUrl;
@@ -120,6 +126,31 @@ public class CourseManager : ICourseService
             GetAllCourseResponse getAllCourseResponse = new GetAllCourseResponse();
             getAllCourseResponse.Id = course.Id;
             getAllCourseResponse.CategoryId = course.CategoryId;
+            getAllCourseResponse.InstructorId = course.InstructorId;
+            getAllCourseResponse.Title = course.Title;
+            getAllCourseResponse.Description = course.Description;
+            getAllCourseResponse.CreatedDate = course.CreatedDate;
+            getAllCourseResponse.ImageUrl = course.ImageUrl;
+            getAllCourseResponse.UpdatedDate = course.UpdatedDate;
+
+            getAllCourseResponses.Add(getAllCourseResponse);
+        }
+
+        return getAllCourseResponses;
+    }
+
+    public List<GetAllCourseResponse> GetCourseByInstructor(int instructorId)
+    {
+        List<Course> courses = _courseDal.GetAll(crs => crs.InstructorId == instructorId);
+
+        List<GetAllCourseResponse> getAllCourseResponses = new List<GetAllCourseResponse>();
+
+        foreach (Course course in courses)
+        {
+            GetAllCourseResponse getAllCourseResponse = new GetAllCourseResponse();
+            getAllCourseResponse.Id = course.Id;
+            getAllCourseResponse.CategoryId = course.CategoryId;
+            getAllCourseResponse.InstructorId = course.InstructorId;
             getAllCourseResponse.Title = course.Title;
             getAllCourseResponse.Description = course.Description;
             getAllCourseResponse.CreatedDate = course.CreatedDate;

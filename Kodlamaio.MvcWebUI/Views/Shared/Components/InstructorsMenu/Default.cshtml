@@ -1,0 +1,13 @@
+﻿@model InstructorListViewModel
+
+<div class="list-group mb-3">
+    <a class="list-group-item list-group-item-action fw-bold" aria-current="true" asp-controller="Course" asp-action="Index">
+        Instructors
+    </a>
+    @foreach (var item in Model.Instructors)
+    {
+        <a class="list-group-item list-group-item-action" aria-current="true" asp-controller="Course" asp-action="GetCourseByInstructor" asp-route-id="@item.Id">
+            @item.FullName
+        </a>
+    }
+</div>

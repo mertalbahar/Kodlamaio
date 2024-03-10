@@ -67,5 +67,15 @@ namespace Kodlamaio.MvcWebUI.Controllers
 
             return View(model);
         }
+
+        public IActionResult GetCourseByInstructor([FromRoute(Name = "id")] int instructorId)
+        {
+            var model = new CourseListViewModel
+            {
+                Courses = _courseService.GetCourseByInstructor(instructorId)
+            };
+
+            return View(model);
+        }
     }
 }
